@@ -26,10 +26,13 @@ public class ContaBancaria {
     public ContaBancaria() {
     }
 
-    //CONSTRUTOR COM ARGUMENTOS, QUANDO INSTANCIAR A CLASSE VOU FAZER PASSAR O CLIENTE, SALDO E LIMITE DE SAQUE
-    public ContaBancaria(Cliente cliente, double saldo, double limiteChequeEspecial) {
+    //CONSTRUTOR COM ARGUMENTOS, QUANDO INSTANCIAR A CLASSE VOU PASSAR O CLIENTE, SALDO E LIMITE DE SAQUE
+
+    public ContaBancaria(Long id, double saldo, double limiteChequeEspecial, Cliente cliente) {
+        this.id = id;
         this.saldo = saldo;
         this.limiteChequeEspecial = limiteChequeEspecial;
+        this.cliente = cliente;
     }
 
     //MÉTODO PARA SACAR
