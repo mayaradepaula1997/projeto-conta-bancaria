@@ -1,5 +1,6 @@
 package dev.conta_bancaria.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -15,10 +16,12 @@ public class Banco {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    //@Column(unique = true)
     private String nome;
 
     //1 BANCO -> N CLIENTES
     @OneToMany(mappedBy = "banco", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Cliente> listaClientes = new ArrayList<>();
 
 
