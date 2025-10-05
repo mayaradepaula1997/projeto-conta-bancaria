@@ -1,7 +1,9 @@
 package dev.conta_bancaria.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -17,11 +19,12 @@ public class Cliente {
     //MUITOS CLIENTES PERTENCEM A UM BANCO
     @ManyToOne
     @JoinColumn(name = "banco_id")
+    @JsonBackReference
     private Banco banco;
 
     //1 CLIENTE -> N CONTAS)
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
-    private ContaBancaria contaBancaria;
+    private List<ContaBancaria> contaBancaria;
 
 
     //CONSTRUTOR VAZIO
@@ -58,11 +61,11 @@ public class Cliente {
         this.banco = banco;
     }
 
-    public ContaBancaria getContaBancaria() {
+    public List<ContaBancaria> getContaBancaria() {
         return contaBancaria;
     }
 
-    public void setContaBancaria(ContaBancaria contaBancaria) {
+    public void setContaBancaria(List<ContaBancaria> contaBancaria) {
         this.contaBancaria = contaBancaria;
     }
 
